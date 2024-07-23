@@ -1,0 +1,45 @@
+import APIpage from "../POM/apipage.cy";
+
+// describe("My First Test Suite", function () {
+//   it("My FirstTest case", function () {
+//     cy.visit("https://rahulshettyacademy.com/angularAppdemo/");
+
+//     cy.intercept(
+//       "GET",
+//       "https://rahulshettyacademy.com/Library/GetBook.php?AuthorName=shetty",
+//       (req) => {
+//         req.url =
+//           "https://rahulshettyacademy.com/Library/GetBook.php?AuthorName=malhotra";
+//         req.continue((res) => {
+//           //   expect(res.statusCode).to.equal(403);
+//         });
+//       }
+//     ).as("dummyUrl");
+
+//     // cy.get("button[class='btn btn-primary']").click();
+//     const app = new APIpage();
+//     app.demoGETLink();
+//     cy.wait("@dummyUrl");
+//   });
+// });
+
+describe("My First Test Suite", function () {
+  it("My FirstTest case", function () {
+    cy.visit("https://rahulshettyacademy.com/angularAppdemo/");
+
+    cy.intercept(
+      "GET",
+      "https://rahulshettyacademy.com/Library/GetBook.php?AuthorName=shetty",
+      (req) => {
+        req.url =
+          "https://rahulshettyacademy.com/Library/GetBook.php?AuthorName=malhotra";
+        req.continue((res) => {
+          //   expect(res.statusCode).to.equal(403);
+        });
+      }
+    ).as("dummyUrl");
+    const app = new APIpage();
+    app.demoGETLink();
+    cy.wait("@dummyUrl");
+  });
+});
