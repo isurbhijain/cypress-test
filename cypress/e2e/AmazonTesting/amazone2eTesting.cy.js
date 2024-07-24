@@ -3,10 +3,10 @@ import homePage from "../../locators/Page Locators/homePage.cy"
 import searchResultPage from "../../locators/Page Locators/searchResultPage.cy"
 import signinPage from "../../locators/Page Locators/signinPage.cy"
 
-const homepage = new homePage()
-const signinpage = new signinPage()
-const searchresultpage = new searchResultPage()
-const desiredproductpage = new desiredProductPage()
+//const homepage = new homePage()
+//const signinpage = new signinPage()
+//const searchresultpage = new searchResultPage()
+//const desiredproductpage = new desiredProductPage()
 describe("Amazon Testing",function(){
     before(function(){
         cy.fixture("dataAmazon.json").then(function(data){
@@ -15,12 +15,12 @@ describe("Amazon Testing",function(){
     })
     it("Purchasing amazon product",function(){
         cy.visit(this.data.amazonURL)
-        homepage.search(this.data.requiredProduct)
-        searchresultpage.selectDesiredProduct(this.data.desiredBrand)
-        desiredproductpage.addToCartSelectedProduct()
-        homepage.clickOnHome()
-        homepage.changeLanguage(this.data.newLanguage)
-        homepage.clickOnHome()
-        homepage.verifyChangedLanguage()
+        homePage.search(this.data.requiredProduct)
+        searchResultPage.selectDesiredProduct(this.data.desiredBrand)
+        desiredProductPage.addToCartSelectedProduct()
+        homePage.clickOnHome()
+        homePage.changeLanguage(this.data.newLanguage)
+        homePage.clickOnHome()
+        homePage.verifyChangedLanguage()
     })
 })

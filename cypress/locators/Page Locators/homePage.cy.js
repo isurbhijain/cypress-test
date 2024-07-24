@@ -1,23 +1,26 @@
+const webLocators = {homeButton:"#nav-logo-sprites",langButton : "#icp-nav-flyout",langHindi:".nav-link > .nav-text > span",
+    langText:"span.nav-line-2 div",signinButton:"#nav-link-accountList",searchBox:"#twotabsearchtextbox",
+    searchIcon:"#nav-search-submit-button"}
 class homePage{
-clickOnHome(){
-    cy.get("#nav-logo-sprites").click()
+static clickOnHome(){
+    cy.get(webLocators.homeButton).click()
 }
-changeLanguage(lang){
-    cy.get("#icp-nav-flyout").trigger("mouseover")
-    cy.get(".nav-link > .nav-text > span").contains("HI").click()
+static changeLanguage(lang){
+    cy.get(webLocators.langButton).trigger("mouseover")
+    cy.get(webLocators.langHindi).contains("HI").click()
 }
-verifyChangedLanguage(){
-    cy.get("span.nav-line-2 div").then(function(ele){
+static verifyChangedLanguage(){
+    cy.get(webLocators.langText).then(function(ele){
         const langText = ele.text()
         expect(langText).to.equal("HI")
     })
 }
-clickOnSignIn(){
-    cy.get("#nav-link-accountList").click()
+static clickOnSignIn(){
+    cy.get(webLocators.signinButton).click()
     }
-search(product){
-    cy.get("#twotabsearchtextbox").type(product)
-    cy.get("#nav-search-submit-button").click()
+static search(product){
+    cy.get(webLocators.searchBox).type(product)
+    cy.get(webLocators.searchIcon).click()
 }
 }
 export default homePage

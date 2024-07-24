@@ -1,11 +1,14 @@
+const webLocators ={emailBox:"#ap_email",passwordBox:"#ap_password",
+                continueButton:"#continue",signinSubmit:"#signInSubmit"
+}
 class signinPage{
 enterEmail(email){
-    cy.get("#ap_email").type(email)
-    cy.get("#continue").click()
+    cy.get(webLocators.emailBox).type(email)
+    cy.get(webLocators.continueButton).click()
     }
 enterPassword(password){
-    cy.get("#ap_password").type(password)
-    cy.get("#signInSubmit").click()
+    cy.get(webLocators.passwordBox).type(password)
+    cy.get(webLocators.signinSubmit).click()
     }
 }
 export default signinPage
