@@ -1,8 +1,17 @@
 export default class AMZHomePage {
-  enterSearchBar(text) {
-    cy.get("#twotabsearchtextbox").type(text);
+  static locators = {
+    searchBar: "#twotabsearchtextbox",
+    productSuggestion: ".s-suggestion-container > .s-suggestion",
+  };
+
+  static enterSearchBar(text) {
+    cy.get(this.locators.searchBar).type(text, { timeout: 5000 });
   }
-  selectTheProduct() {
-    cy.get(".s-suggestion-container > .s-suggestion").contains("12").click();
+  static selectTheProduct() {
+    cy.get(this.locators.productSuggestion)
+      .contains("laptops")
+      .should("be.visible")
+      .click({ force: true });
+    // using force true because the elements is getting detached from the dom
   }
 }

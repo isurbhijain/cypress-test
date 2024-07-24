@@ -1,6 +1,13 @@
 export default class AMZProductPage {
-  assertProduct(name) {
-    cy.get("#title > #productTitle")
+  static locators = {
+    productTitle: "#title > #productTitle",
+    addToCart: "#twisterPlusPriceSubtotalWWDesktop_feature_div+div>div>span",
+    atcassert: ".a-size-medium-plus",
+    tryagiain: "a > #attach-string-cart-try-again",
+  };
+
+  static assertProduct(name) {
+    cy.get(this.locators.productTitle)
       .should("contain", name)
       .invoke("text")
       .then((text) => {
@@ -9,14 +16,8 @@ export default class AMZProductPage {
       });
   }
 
-  addToCart() {
-    cy.get(
-      "#twisterPlusPriceSubtotalWWDesktop_feature_div+div>div>span"
-    ).click();
+  static addToCart() {
+    cy.get(this.locators.addToCart).click();
+    cy.get(this.locators.tryagiain, { timeout: 50000 }).click({ force: true });
   }
-  // checkProduct() {
-  //   cy.get("#attachDisplayAddBaseAlert > .a-box-inner > .a-alert-heading", {
-  //     timeout: 10000,
-  //   }).should("contain", "Added to Cart");
-  // }
 }

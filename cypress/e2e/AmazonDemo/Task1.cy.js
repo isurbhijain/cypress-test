@@ -3,24 +3,26 @@ import AMZProductListPage from "../../locators/AmazonLocators/amzProductsList.cy
 import AMZProductPage from "../../locators/AmazonLocators/amzProduct.cy";
 import AMZCartPage from "../../locators/AmazonLocators/amzCart.cy";
 
-const hp = new AMZHomePage();
-const plp = new AMZProductListPage();
-const pp = new AMZProductPage();
-const cp = new AMZCartPage();
-
 describe("Amazon Test", () => {
+  var res;
+  before("fub", () => {
+    cy.fixture("example").then((data) => {
+      res = data;
+    });
+  });
+
   it("Test 1", () => {
     cy.launch();
-    hp.enterSearchBar("OnePlus");
-    hp.selectTheProduct();
-    plp.selectProduct("12R");
-    pp.assertProduct("OnePlus 12R");
-    pp.addToCart();
-    // pp.checkProduct();
+    AMZHomePage.enterSearchBar(res.searchText);
+    AMZHomePage.selectTheProduct();
+    AMZProductListPage.selectProduct(res.productName);
+    AMZProductPage.assertProduct(res.productName);
+    AMZProductPage.addToCart();
+    // cy.wait(3000);
     cy.go("back");
     cy.go("back");
-    plp.goToCart();
-    cp.getCartText();
-    plp.changeLanguage("सभी");
+    AMZProductListPage.goToCart();
+    AMZCartPage.getCartText();
+    AMZProductListPage.changeLanguage(res.languageAssert);
   });
 });

@@ -1,10 +1,15 @@
 export default class AMZCartPage {
-  getCartText() {
-    cy.get(".a-truncate-cut", { timeout: 10000 })
+  static locators = {
+    cartProduct: ".a-truncate-cut",
+    assertText: "Lenovo IdeaPad",
+  };
+
+  static getCartText() {
+    cy.get(this.locators.cartProduct, { timeout: 10000 })
       .invoke("text")
       .then((text) => {
         cy.log(text);
-        expect(text).eq(Cypress.env("pname"));
+        expect(text).to.include(this.locators.assertText);
       });
   }
 }

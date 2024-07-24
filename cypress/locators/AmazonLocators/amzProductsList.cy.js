@@ -1,23 +1,26 @@
 export default class AMZProductListPage {
-  selectProduct(name) {
-    cy.get(".a-size-mini > .a-link-normal > span")
+  static locators = {
+    product: ".a-size-mini > .a-link-normal > span",
+    languageIcon: "#icp-nav-flyout",
+    languageText: ".nav-link > .nav-text > span",
+    allElement: ".hm-icon-label",
+    cartIcon: "#nav-cart",
+  };
+  static selectProduct(name) {
+    cy.get(this.locators.product)
       .contains(name)
       .then((el) => {
         cy.wrap(el).parent().invoke("removeAttr", "target").click();
       });
   }
 
-  changeLanguage(hindi) {
-    cy.get("#icp-nav-flyout").trigger("mouseover");
-    cy.get(".nav-link > .nav-text > span").contains("HI").click();
-    cy.get(".hm-icon-label").should("have.text", hindi);
-    // cy.get("#icp-nav-flyout").trigger("mouseover");
-    // cy.get(".nav-link > .nav-text > span", { timeout: 3000 })
-    //   .contains("EN")
-    //   .click();
+  static changeLanguage(hindi) {
+    cy.get(this.locators.languageIcon).trigger("mouseover");
+    cy.get(this.locators.languageText).contains("HI").click();
+    cy.get(this.locators.allElement).should("have.text", hindi);
   }
 
-  goToCart() {
-    cy.get("#nav-cart").click();
+  static goToCart() {
+    cy.get(this.locators.cartIcon).click();
   }
 }

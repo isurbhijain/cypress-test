@@ -11,10 +11,16 @@
 //
 // -- This is a parent command --
 import "cypress-iframe";
-import LoginPage from "../POM/loginpage.cy.js";
-import LogoutPage from "../POM/logoutpage.cy.js";
-import RegisterPage from "../POM/registerpage.cy.js";
-import { VALUES } from "../constants/values.js";
+import LoginPage from "../locators/DemoWebshopLocators/loginpage.cy.js";
+import LogoutPage from "../locators/DemoWebshopLocators/logoutpage.cy.js";
+import RegisterPage from "../locators/DemoWebshopLocators/registerpage.cy.js";
+
+var result;
+before("fub", () => {
+  cy.fixture("example").then((data) => {
+    result = data;
+  });
+});
 
 Cypress.Commands.add("login", (email, password) => {
   const lp = new LoginPage();
@@ -28,7 +34,7 @@ Cypress.Commands.add("login", (email, password) => {
 Cypress.Commands.add("logout", () => {
   const lop = new LogoutPage();
   lop.clickLogout();
-  lop.assertLogout(VALUES.logoutAssert);
+  lop.assertLogout(result.logoutAssert);
 });
 
 Cypress.Commands.add("register", () => {
@@ -37,10 +43,10 @@ Cypress.Commands.add("register", () => {
   rp.visit();
   rp.clickRegisterLink();
   rp.selectGender();
-  rp.enetrFirstName(VALUES.fname);
-  rp.enterLastname(VALUES.lname);
-  rp.enterEmail(VALUES.email);
-  rp.enterPassword(VALUES.password);
+  rp.enetrFirstName(result.fname);
+  rp.enterLastname(result.lname);
+  rp.enterEmail(result.email);
+  rp.enterPassword(result.password);
   rp.clickRegister();
 });
 
@@ -61,7 +67,6 @@ Cypress.Commands.add("LoginApi", () => {
 Cypress.Commands.add("launch", () => {
   cy.visit("https://www.amazon.in/");
 });
-
 //
 //
 // -- This is a child command --
