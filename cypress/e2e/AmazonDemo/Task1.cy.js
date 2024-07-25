@@ -18,9 +18,7 @@ describe("Amazon Test", () => {
     AMZProductListPage.selectProduct(res.productName);
     AMZProductPage.assertProduct(res.productName);
     AMZProductPage.addToCart();
-    // cy.wait(3000);
-    cy.go("back");
-    cy.go("back");
+    cy.go(-3);
     AMZProductListPage.goToCart();
     AMZCartPage.getCartText();
     AMZProductListPage.changeLanguage(res.languageAssert);
