@@ -1,0 +1,100 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-07-24T09:08:22.369Z",
+    "end": "2024-07-24T09:08:26.587Z",
+    "duration": 4218,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "255bbd81-65e7-4ca7-b2ea-d5254951f76a",
+      "title": "",
+      "fullFile": "cypress\\e2e\\test\\test1.cy.js",
+      "file": "cypress\\e2e\\test\\test1.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "7f6a1b73-53af-451d-ade4-7f5dc4a5ae60",
+          "title": "My first test suit",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "My first testcase",
+              "fullTitle": "My first test suit My first testcase",
+              "timedOut": null,
+              "duration": 2353,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-videos-passed\",\n  \"value\": \"cypress\\\\e2e\\\\test\\\\test1.cy.js\"\n}",
+              "code": "cy.visit(\"https://rahulshettyacademy.com/seleniumPractise/#/\");\ncy.get('.search-keyword').type('cucumber'); // cy.get('a.increment').click()\n// cy.contains('ADD TO CART').click()",
+              "err": {},
+              "uuid": "f04c0a63-50c5-496a-a872-40f46dfd5e74",
+              "parentUUID": "7f6a1b73-53af-451d-ade4-7f5dc4a5ae60",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f04c0a63-50c5-496a-a872-40f46dfd5e74"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2353,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
